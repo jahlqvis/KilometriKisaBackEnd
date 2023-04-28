@@ -5,9 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KilometrikisaBE
 {
-    public class Function1
+    public class TimerFunc
     {
-        [FunctionName("Function1")]
+        [FunctionName("Kilometrikisa")]
         public void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");

@@ -11,9 +11,6 @@ namespace Kilometrikisa
 {
     public class Kilometrikisa
     {
-        //const axiosCookieJarSupport = require('axios-cookiejar-support').default;
-
-
         const string kkPageUrlStart = "https://www.kilometrikisa.fi";
         const string loginPageUrl = kkPageUrlStart + "/accounts/login/";
         const string myTeamsUrl = kkPageUrlStart + "/accounts/myteams/";
@@ -134,11 +131,11 @@ namespace Kilometrikisa
             var loginFormNode = htmlDocument.DocumentNode.SelectSingleNode("//form");
             var loginFormHtml = loginFormNode.InnerHtml;
 
-            var loginFormTokenStart = "value=\"";
-            var loginFormTokenEnd = "\">";
+            var loginFormTokenStart = "value=\'";
+            var loginFormTokenEnd = "\'>";
 
             var csrfTokenStartIndex = loginFormHtml.IndexOf(loginFormTokenStart) + loginFormTokenStart.Length;
-            var csrfTokenEndIndex = loginFormHtml.IndexOf(loginFormTokenEnd);
+            var csrfTokenEndIndex = loginFormHtml.IndexOf(loginFormTokenEnd, csrfTokenStartIndex);
 
             var csrfToken = loginFormHtml.Substring(csrfTokenStartIndex, csrfTokenEndIndex - csrfTokenStartIndex);
 
